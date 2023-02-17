@@ -46,6 +46,14 @@ const addItem = document.getElementsByClassName("title");
 let submit = document.querySelector('input[type="submit"]');
 submit.value = "SEND";
 let secondItem = document.querySelector(".list-group-item:nth-child(2)");
-secondItem.style.backgroundColor = "green";
+// secondItem.style.backgroundColor = "green";
 const thridItem = document.querySelector(".list-group-item:nth-child(3");
-thridItem.style.opacity = "0";
+// thridItem.style.opacity = "0";
+
+// QuerySelectorAll
+let font1 = document.querySelectorAll(".list-group-item");
+font1[1].style.color = "green";
+let odd = document.querySelectorAll("li:nth-child(odd");
+for (const el of odd) {
+  el.style.backgroundColor = "green";
+}
