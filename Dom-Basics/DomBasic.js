@@ -15,7 +15,6 @@
 let headTitle = document.getElementById("header-title");
 let header = document.getElementById("main-header");
 const addItem = document.getElementsByClassName("title");
-// console.log(headTitle.textContent);
 //textContent will show the exact the content of that tag it wont care about the styleings
 // console.log(headTitle.innerText);
 // But this innerText will consider the styling and show the content
@@ -24,3 +23,10 @@ const addItem = document.getElementsByClassName("title");
 header.style.borderBottom = "solid 3px black";
 addItem[0].style.fontWeight = "bold";
 addItem[0].style.color = "green";
+const listItems = document.getElementsByClassName("list-group-item");
+listItems[2].style.backgroundColor = "green";
+
+for (const el of listItems) {
+  el.style.fontWeight = "bold";
+  // }
+}
