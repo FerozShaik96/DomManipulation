@@ -20,13 +20,24 @@ const addItem = document.getElementsByClassName("title");
 // But this innerText will consider the styling and show the content
 // headTitle.innerText = "You are Alone";
 // headTitle.innerHTML = "<h3>Hello</h3>";
-header.style.borderBottom = "solid 3px black";
-addItem[0].style.fontWeight = "bold";
-addItem[0].style.color = "green";
-const listItems = document.getElementsByClassName("list-group-item");
-listItems[2].style.backgroundColor = "green";
+// header.style.borderBottom = "solid 3px black";
+// addItem[0].style.fontWeight = "bold";
+// addItem[0].style.color = "green";
+// const listItems = document.getElementsByClassName("list-group-item");
+// listItems[2].style.backgroundColor = "green";
 
-for (const el of listItems) {
+// for (const el of listItems) {
+//   el.style.fontWeight = "bold";
+//   // }
+// }
+
+//GetElement By tagName
+
+const li = document.getElementsByTagName("li");
+console.log(li);
+li[2].style.backgroundColor = "green";
+
+for (const el of li) {
   el.style.fontWeight = "bold";
   // }
 }
