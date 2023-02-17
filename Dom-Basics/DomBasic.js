@@ -33,11 +33,19 @@ const addItem = document.getElementsByClassName("title");
 
 //GetElement By tagName
 
-const li = document.getElementsByTagName("li");
-console.log(li);
-li[2].style.backgroundColor = "green";
+// const li = document.getElementsByTagName("li");
+// console.log(li);
+// li[2].style.backgroundColor = "green";
 
-for (const el of li) {
-  el.style.fontWeight = "bold";
-  // }
-}
+// for (const el of li) {
+//   el.style.fontWeight = "bold";
+//   // }
+// }
+
+//Get Element BY QuerySelector
+let submit = document.querySelector('input[type="submit"]');
+submit.value = "SEND";
+let secondItem = document.querySelector(".list-group-item:nth-child(2)");
+secondItem.style.backgroundColor = "green";
+const thridItem = document.querySelector(".list-group-item:nth-child(3");
+thridItem.style.opacity = "0";
