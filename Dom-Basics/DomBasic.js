@@ -116,17 +116,21 @@
 
 let addForm = document.getElementById("addForm");
 let itemList = document.getElementById("items");
+let filter = document.getElementById("filter");
 
 //Form Submit Event
 addForm.addEventListener("submit", additem);
 // Delete Event
 itemList.addEventListener("click", removeItem);
+// Filter Elements
+filter.addEventListener("keyup", filterItems);
 //
 function additem(e) {
   e.preventDefault();
 
   //Get Input Value
   let newItem = document.getElementById("item").value;
+  let newItem1 = document.getElementById("description").value;
 
   //Creat new Li Element
   let li = document.createElement("li");
@@ -136,6 +140,7 @@ function additem(e) {
   console.log(li);
   //Adding a The Text
   li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(" " + newItem1));
 
   //Delete Button
   let button = document.createElement("button");
@@ -151,7 +156,7 @@ function additem(e) {
   //Creating A New Edit Button
   let editButton = document.createElement("button");
   //Adding The Classes to it
-  editButton.classList = "btn btn-danger btn-sm float-right";
+  editButton.classList = "btn btn-sm float-right";
   //Adding the Text Content
   editButton.appendChild(document.createTextNode("Edit"));
   //Appending to List
@@ -170,4 +175,24 @@ function removeItem(e) {
       itemList.removeChild(li);
     }
   }
+}
+
+//Filter Items
+function filterItems(e) {
+  //conver text to lowercase
+  let text = e.target.value.toLowerCase();
+  // Getting All LI Elements
+  let items = itemList.querySelectorAll("li");
+  items.forEach((item, i) => {
+    const itemName = item.firstChild.textContent;
+    const description = item.childNodes[1].textContent;
+    if (
+      itemName.toLowerCase().indexOf(text) != -1 ||
+      description.toLowerCase().indexOf(text) != -1
+    ) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
 }
