@@ -1,10 +1,11 @@
 "use strict";
 function saveToLocalStorage(event) {
   event.preventDefault();
+  let obj = {};
   const submitName = event.target.username.value;
   const email = event.target.email.value;
-  console.log(submitName);
-  console.log(email);
-  localStorage.setItem("name", submitName);
-  localStorage.setItem("Emial", email);
+  obj.Name = submitName;
+  obj.Email = email;
+  let obj_serialized = JSON.stringify(obj);
+  localStorage.setItem("userDetails", obj_serialized);
 }
