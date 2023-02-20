@@ -7,5 +7,13 @@ function saveToLocalStorage(event) {
   obj.Name = submitName;
   obj.Email = email;
   let obj_serialized = JSON.stringify(obj);
-  localStorage.setItem("userDetails", obj_serialized);
+  localStorage.setItem(obj.Email, obj_serialized);
+  showUserOnScreen(obj);
+}
+function showUserOnScreen(obj) {
+  const parentEle = document.getElementById("listofItems");
+  const parentElement = document.getElementById("listofItems");
+  const childElement = document.createElement("li");
+  childElement.textContent = `${obj.Name}-${obj.Email}`;
+  parentElement.appendChild(childElement);
 }
