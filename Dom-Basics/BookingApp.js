@@ -11,9 +11,16 @@ function saveToLocalStorage(event) {
   showUserOnScreen(obj);
 }
 function showUserOnScreen(obj) {
-  const parentEle = document.getElementById("listofItems");
   const parentElement = document.getElementById("listofItems");
   const childElement = document.createElement("li");
-  childElement.textContent = `${obj.Name}-${obj.Email}`;
+  childElement.textContent = `${obj.Name}-${obj.Email} `;
+  const button = document.createElement("input");
+  button.type = "button";
+  button.value = "Delete";
+  button.onclick = () => {
+    localStorage.removeItem(obj.Email);
+    parentElement.removeChild(childElement);
+  };
+  childElement.appendChild(button);
   parentElement.appendChild(childElement);
 }
