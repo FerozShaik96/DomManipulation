@@ -80,7 +80,7 @@
 // //PerviousElementSibling
 // console.log(itemList.previousElementSibling);
 
-// // CreateElement
+// CreateElement
 // let newDiv = document.createElement("div");
 // newDiv.className = "Hello";
 // newDiv.id = "hello1";
@@ -95,7 +95,7 @@
 
 // //Insert newDiv in HTML
 // let container = document.querySelector("header .container");
-// let h1 = document.querySelector("header h1");
+// let h1 = document.querySelector("header h2");
 // container.insertBefore(newDiv, h1);
 
 // let newDiv1 = document.createElement("div");
