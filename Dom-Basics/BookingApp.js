@@ -11,9 +11,9 @@ function saveToLocalStorage(event) {
   showUserOnScreen(obj);
 }
 function showUserOnScreen(obj) {
-  const parentElement = document.getElementById("listofItems");
+  const parentElement = document.getElementById("my-form");
   const childElement = document.createElement("li");
-  childElement.textContent = `${obj.Name}-${obj.Email} `;
+  childElement.textContent = `${obj.Name}-${obj.Email}  `;
   const button = document.createElement("input");
   button.type = "button";
   button.value = "Delete";
