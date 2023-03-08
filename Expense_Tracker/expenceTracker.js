@@ -11,7 +11,7 @@ function addExpences(event) {
     description,
     select,
   };
-  localStorage.setItem(obj.select, JSON.stringify(obj));
+  localStorage.setItem(obj.description, JSON.stringify(obj));
   display(obj);
 }
 
@@ -28,7 +28,7 @@ function display(obj) {
   deleteBtn.value = "Detele";
   li.appendChild(deleteBtn);
   deleteBtn.onclick = () => {
-    localStorage.removeItem(obj.select);
+    localStorage.removeItem(obj.description);
     displayValues.removeChild(li);
   };
   const editBtn = document.createElement("input");
@@ -37,7 +37,7 @@ function display(obj) {
   li.appendChild(editBtn);
   editBtn.onclick = () => {
     displayValues.removeChild(li);
-    localStorage.removeItem(obj.select);
+    localStorage.removeItem(obj.description);
     document.querySelector("#expence").value = obj.amount;
     document.querySelector("#description").value = obj.description;
     document.getElementById("select").value = obj.select;
