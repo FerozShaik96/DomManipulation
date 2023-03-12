@@ -1,0 +1,82 @@
+"use strict";
+let userActive = [];
+let user = {
+  userName: "abc",
+  lastActivetime: 0,
+};
+function updateLasteUseractivityTime() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      user.lastActivetime = new Date().getTime();
+      resolve(user.lastActivetime);
+    }, 1000);
+  });
+}
+function creatpost(value) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      user.userName = value;
+      resolve(user.userName);
+    });
+  });
+}
+function deletePost() {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      userActive.pop();
+      res();
+    }, 1000);
+  });
+}
+Promise.all([updateLasteUseractivityTime(), creatpost("feroz")]).then(
+  (userName) => {
+    // printDetails();
+    userActive.push(user);
+    console.log(userName);
+  }
+);
+
+Promise.all([updateLasteUseractivityTime(), creatpost("javeed")]).then(
+  (userName) => {
+    // printDetails();
+    userActive.push(user);
+
+    console.log(userName);
+  }
+);
+// deletePost().then((post) => {
+//   console.log(post);
+// });
+console.log(userActive);
+console.log(user.userName);
+console.log(userActive);
+
+// let posts = [];
+// let user = {
+//   name: "abc",
+//   lastActivetime: "",
+// };
+
+// function createPost(a) {
+//   return new Promise((resolve, reject) => {
+//     posts.push(a);
+//     resolve(a);
+//   });
+// }
+// function updateLastUserActivityTime() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       user.lastActivetime = new Date().getTime();
+//       resolve(user.lastActivetime);
+//     }, 1000);
+//   });
+// }
+
+// Promise.all([createPost("POST1"), updateLastUserActivityTime()]).then((value) =>
+//   console.log(`User's recent post ${value[0]} Last Active Time : ${value[1]}`)
+// );
+
+// Promise.all([createPost("POST2"), updateLastUserActivityTime()]).then((value) =>
+//   console.log(`User's recent post ${value[0]} Last Active Time : ${value[1]}`)
+// );
+// console.log(posts);
