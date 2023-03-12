@@ -50,33 +50,3 @@ Promise.all([updateLasteUseractivityTime(), creatpost("javeed")]).then(
 console.log(userActive);
 console.log(user.userName);
 console.log(userActive);
-
-// let posts = [];
-// let user = {
-//   name: "abc",
-//   lastActivetime: "",
-// };
-
-// function createPost(a) {
-//   return new Promise((resolve, reject) => {
-//     posts.push(a);
-//     resolve(a);
-//   });
-// }
-// function updateLastUserActivityTime() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       user.lastActivetime = new Date().getTime();
-//       resolve(user.lastActivetime);
-//     }, 1000);
-//   });
-// }
-
-// Promise.all([createPost("POST1"), updateLastUserActivityTime()]).then((value) =>
-//   console.log(`User's recent post ${value[0]} Last Active Time : ${value[1]}`)
-// );
-
-// Promise.all([createPost("POST2"), updateLastUserActivityTime()]).then((value) =>
-//   console.log(`User's recent post ${value[0]} Last Active Time : ${value[1]}`)
-// );
-// console.log(posts);
