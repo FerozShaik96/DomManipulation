@@ -50,7 +50,7 @@ function showUserOnScreen(obj) {
         `https://crudcrud.com/api/c2c95922c457495ab7159a2e1fec56df/appointmentData/${obj._id}`
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
     parentElement.removeChild(childElement);
@@ -59,7 +59,18 @@ function showUserOnScreen(obj) {
   EditButton.type = "button";
   EditButton.value = "Edit";
   EditButton.onclick = () => {
-    localStorage.removeItem(obj.Email);
+    // localStorage.removeItem(obj.Email);
+    axios
+      .delete(
+        `https://crudcrud.com/api/c2c95922c457495ab7159a2e1fec56df/appointmentData/${obj._id}`
+      )
+
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     parentElement.removeChild(childElement);
     document.getElementById("id-name").value = obj.Name;
     document.getElementById("id-email").value = obj.Email;
