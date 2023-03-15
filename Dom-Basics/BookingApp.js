@@ -6,9 +6,20 @@ function saveToLocalStorage(event) {
   let obj = {};
   obj.Name = submitName;
   obj.Email = email;
-  let obj_serialized = JSON.stringify(obj);
-  localStorage.setItem(obj.Email, obj_serialized);
-  showUserOnScreen(obj);
+  // let obj_serialized = JSON.stringify(obj);
+  // localStorage.setItem(obj.Email, obj_serialized);
+  axios
+    .post(
+      "https://crudcrud.com/api/db9cdbe665804ab4bfecaf0179ad10f6/appointmentData",
+      obj
+    )
+    .then((response) => {
+      showUserOnScreen(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // showUserOnScreen(obj);
 }
 function showUserOnScreen(obj) {
   const parentElement = document.getElementById("my-form");
