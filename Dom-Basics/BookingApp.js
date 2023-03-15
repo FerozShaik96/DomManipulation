@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
       "https://crudcrud.com/api/c2c95922c457495ab7159a2e1fec56df/appointmentData"
     )
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       for (var i = 0; i < res.data.length; i++) {
         showUserOnScreen(res.data[i]);
       }
@@ -44,7 +44,15 @@ function showUserOnScreen(obj) {
   button.type = "button";
   button.value = "Delete";
   button.onclick = () => {
-    localStorage.removeItem(obj.Email);
+    // localStorage.removeItem(obj.Email);
+    axios
+      .delete(
+        `https://crudcrud.com/api/c2c95922c457495ab7159a2e1fec56df/appointmentData/${obj._id}`
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
     parentElement.removeChild(childElement);
   };
   const EditButton = document.createElement("input");
