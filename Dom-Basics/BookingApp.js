@@ -10,7 +10,7 @@ function saveToLocalStorage(event) {
   // localStorage.setItem(obj.Email, obj_serialized);
   axios
     .post(
-      "https://crudcrud.com/api/db9cdbe665804ab4bfecaf0179ad10f6/appointmentData",
+      "https://crudcrud.com/api/c2c95922c457495ab7159a2e1fec56df/appointmentData",
       obj
     )
     .then((response) => {
@@ -21,6 +21,21 @@ function saveToLocalStorage(event) {
     });
   // showUserOnScreen(obj);
 }
+window.addEventListener("DOMContentLoaded", () => {
+  axios
+    .get(
+      "https://crudcrud.com/api/c2c95922c457495ab7159a2e1fec56df/appointmentData"
+    )
+    .then((res) => {
+      console.log(res);
+      for (var i = 0; i < res.data.length; i++) {
+        showUserOnScreen(res.data[i]);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 function showUserOnScreen(obj) {
   const parentElement = document.getElementById("my-form");
   const childElement = document.createElement("li");
