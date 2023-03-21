@@ -14,7 +14,7 @@ function candyQuantity(event) {
   showUserOnScreen(obj);
   axios
     .post(
-      "https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales",
+      "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales",
       obj
     )
     .then((res) => console.log(res))
@@ -22,7 +22,7 @@ function candyQuantity(event) {
 }
 window.addEventListener("DOMContentLoaded", () => {
   axios
-    .get("https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales")
+    .get("https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales")
     .then((res) => {
       for (let i = 0; i < res.data.length; i++) {
         showUserOnScreen(res.data[i]);
@@ -57,20 +57,9 @@ function showUserOnScreen(obj) {
 
   // Button Click
   btn1.onclick = () => {
-    console.log(obj.candy);
     axios
-      .delete(
-        `https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales/${obj._id}`
-      )
-      .then(() => {
-        parentEl.removeChild(childEl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    axios
-      .post(
-        "https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales",
+      .put(
+        `https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
@@ -78,8 +67,17 @@ function showUserOnScreen(obj) {
           quantity: `${obj.quantity - 1}`,
         }
       )
-      .then((res) => {
-        showUserOnScreen(res);
+      .then(() => {
+        axios
+          .get(
+            "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales"
+          )
+          .then((res) => {
+            for (let i = 0; i < res.data.length; i++) {
+              showUserOnScreen(res.data[i]);
+            }
+          });
+        parentEl.removeChild(childEl);
       })
       .catch((err) => {
         console.log(err);
@@ -87,18 +85,8 @@ function showUserOnScreen(obj) {
   };
   btn2.onclick = () => {
     axios
-      .delete(
-        `https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales/${obj._id}`
-      )
-      .then((res) => {
-        parentEl.removeChild(childEl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    axios
-      .post(
-        "https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales",
+      .put(
+        `https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
@@ -106,8 +94,17 @@ function showUserOnScreen(obj) {
           quantity: `${obj.quantity - 2}`,
         }
       )
-      .then((res) => {
-        showUserOnScreen(res);
+      .then(() => {
+        axios
+          .get(
+            "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales"
+          )
+          .then((res) => {
+            for (let i = 0; i < res.data.length; i++) {
+              showUserOnScreen(res.data[i]);
+            }
+          });
+        parentEl.removeChild(childEl);
       })
       .catch((err) => {
         console.log(err);
@@ -115,18 +112,8 @@ function showUserOnScreen(obj) {
   };
   btn3.onclick = () => {
     axios
-      .delete(
-        `https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales/${obj._id}`
-      )
-      .then((res) => {
-        parentEl.removeChild(childEl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    axios
-      .post(
-        "https://crudcrud.com/api/b2d7dcf135f94595bd68c08086006d5e/CandySales",
+      .put(
+        `https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
@@ -134,8 +121,17 @@ function showUserOnScreen(obj) {
           quantity: `${obj.quantity - 3}`,
         }
       )
-      .then((res) => {
-        showUserOnScreen(res);
+      .then(() => {
+        axios
+          .get(
+            "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales"
+          )
+          .then((res) => {
+            for (let i = 0; i < res.data.length; i++) {
+              showUserOnScreen(res.data[i]);
+            }
+          });
+        parentEl.removeChild(childEl);
       })
       .catch((err) => {
         console.log(err);
