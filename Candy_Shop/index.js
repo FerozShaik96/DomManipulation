@@ -1,10 +1,12 @@
 "use strict";
-function candyQuantity(event) {
+
+async function candyQuantity(event) {
   event.preventDefault();
   const candy = event.target.CandyName.value;
   const description = event.target.description.value;
   const price = event.target.Price.value;
   let quantity = event.target.Quantity.value;
+
   let obj = {
     candy,
     description,
@@ -12,17 +14,20 @@ function candyQuantity(event) {
     quantity,
   };
   showUserOnScreen(obj);
-  axios
-    .post(
-      "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales",
+  try {
+    let res = await axios.post(
+      "https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales",
       obj
-    )
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    );
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
 }
-window.addEventListener("DOMContentLoaded", () => {
+
+window.addEventListener("DOMContentLoaded", async () => {
   axios
-    .get("https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales")
+    .get("https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales")
     .then((res) => {
       for (let i = 0; i < res.data.length; i++) {
         showUserOnScreen(res.data[i]);
@@ -33,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function showUserOnScreen(obj) {
+async function showUserOnScreen(obj) {
   const parentEl = document.querySelector("#formElements");
   const childEl = document.createElement("li");
   childEl.textContent = `${obj.candy} - ${obj.description} - ${obj.price} - ${obj.quantity}`;
@@ -56,85 +61,76 @@ function showUserOnScreen(obj) {
   childEl.appendChild(btn3);
 
   // Button Click
-  btn1.onclick = () => {
-    axios
-      .put(
-        `https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales/${obj._id}`,
+  btn1.onclick = async () => {
+    try {
+      const btn1Axios = await axios.put(
+        `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
           price: `${obj.price}`,
           quantity: `${obj.quantity - 1}`,
         }
-      )
-      .then(() => {
-        axios
-          .get(
-            "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales"
-          )
-          .then((res) => {
-            for (let i = 0; i < res.data.length; i++) {
-              showUserOnScreen(res.data[i]);
-            }
-          });
-        parentEl.removeChild(childEl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      );
+
+      const btngetData = await axios
+        .get(
+          `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`
+        )
+        .then((res) => {
+          showUserOnScreen(res.data);
+          console.log(obj);
+        });
+      parentEl.removeChild(childEl);
+    } catch (err) {
+      console.log(err);
+      console.log(obj);
+    }
   };
-  btn2.onclick = () => {
-    axios
-      .put(
-        `https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales/${obj._id}`,
+  btn2.onclick = async () => {
+    try {
+      const btn2axios = axios.put(
+        `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
           price: `${obj.price}`,
           quantity: `${obj.quantity - 2}`,
         }
-      )
-      .then(() => {
-        axios
-          .get(
-            "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales"
-          )
-          .then((res) => {
-            for (let i = 0; i < res.data.length; i++) {
-              showUserOnScreen(res.data[i]);
-            }
-          });
-        parentEl.removeChild(childEl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      );
+      const btnGetData2 = await axios
+        .get(
+          `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`
+        )
+        .then((res) => {
+          showUserOnScreen(res.data);
+        });
+      parentEl.removeChild(childEl);
+    } catch (err) {
+      console.log(err);
+    }
   };
-  btn3.onclick = () => {
-    axios
-      .put(
-        `https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales/${obj._id}`,
+  btn3.onclick = async () => {
+    try {
+      const btnAxios3 = axios.put(
+        `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
           price: `${obj.price}`,
           quantity: `${obj.quantity - 3}`,
         }
-      )
-      .then(() => {
-        axios
-          .get(
-            "https://crudcrud.com/api/ad6e0c7f2fd74410a8e47786e8fd7eb6/CandySales"
-          )
-          .then((res) => {
-            for (let i = 0; i < res.data.length; i++) {
-              showUserOnScreen(res.data[i]);
-            }
-          });
-        parentEl.removeChild(childEl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      );
+      const btnGetData3 = await axios
+        .get(
+          `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`
+        )
+        .then((res) => {
+          showUserOnScreen(res.data);
+        });
+      parentEl.removeChild(childEl);
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
