@@ -16,7 +16,7 @@ async function candyQuantity(event) {
   showUserOnScreen(obj);
   try {
     let res = await axios.post(
-      "https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales",
+      "https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales",
       obj
     );
     console.log(res);
@@ -26,16 +26,17 @@ async function candyQuantity(event) {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-  axios
-    .get("https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales")
-    .then((res) => {
-      for (let i = 0; i < res.data.length; i++) {
-        showUserOnScreen(res.data[i]);
-      }
-    })
-    .catch((err) => {
-      showUserOnScreen(err);
-    });
+  try {
+    const windowData = await axios.get(
+      "https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales"
+    );
+    for (let i = 0; i < windowData.data.length; i++) {
+      showUserOnScreen(windowData.data[i]);
+    }
+    console.log(windowData.data);
+  } catch (err) {
+    showUserOnScreen(err);
+  }
 });
 
 async function showUserOnScreen(obj) {
@@ -64,7 +65,7 @@ async function showUserOnScreen(obj) {
   btn1.onclick = async () => {
     try {
       const btn1Axios = await axios.put(
-        `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`,
+        `https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
@@ -73,14 +74,10 @@ async function showUserOnScreen(obj) {
         }
       );
 
-      const btngetData = await axios
-        .get(
-          `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`
-        )
-        .then((res) => {
-          showUserOnScreen(res.data);
-          console.log(obj);
-        });
+      const btngetData = await axios.get(
+        `https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales/${obj._id}`
+      );
+      showUserOnScreen(btngetData.data);
       parentEl.removeChild(childEl);
     } catch (err) {
       console.log(err);
@@ -90,7 +87,7 @@ async function showUserOnScreen(obj) {
   btn2.onclick = async () => {
     try {
       const btn2axios = axios.put(
-        `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`,
+        `https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
@@ -98,13 +95,11 @@ async function showUserOnScreen(obj) {
           quantity: `${obj.quantity - 2}`,
         }
       );
-      const btnGetData2 = await axios
-        .get(
-          `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`
-        )
-        .then((res) => {
-          showUserOnScreen(res.data);
-        });
+
+      const btnGetData2 = await axios.get(
+        `https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales/${obj._id}`
+      );
+      showUserOnScreen(btnGetData2.data);
       parentEl.removeChild(childEl);
     } catch (err) {
       console.log(err);
@@ -113,7 +108,7 @@ async function showUserOnScreen(obj) {
   btn3.onclick = async () => {
     try {
       const btnAxios3 = axios.put(
-        `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`,
+        `https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales/${obj._id}`,
         {
           candy: `${obj.candy}`,
           description: `${obj.description}`,
@@ -121,13 +116,10 @@ async function showUserOnScreen(obj) {
           quantity: `${obj.quantity - 3}`,
         }
       );
-      const btnGetData3 = await axios
-        .get(
-          `https://crudcrud.com/api/12c9dde8541e4dd19e95e73992ad1836/CandySales/${obj._id}`
-        )
-        .then((res) => {
-          showUserOnScreen(res.data);
-        });
+      const btnGetData3 = await axios.get(
+        `https://crudcrud.com/api/d6a87789801a4f86940be988181a74f2/CandySales/${obj._id}`
+      );
+      showUserOnScreen(btnGetData3.data);
       parentEl.removeChild(childEl);
     } catch (err) {
       console.log(err);
